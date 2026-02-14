@@ -1,0 +1,8 @@
+frontend myfrontend
+  bind 127.0.0.1:80
+  default_backend myservers
+
+backend myservers
+  server server1 127.0.0.1:8000
+  server server2 127.0.0.1:8001
+  server server3 127.0.0.1:8002
