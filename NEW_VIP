@@ -1,8 +1,8 @@
 frontend myfrontend
-  bind 127.0.0.1:8080
+  bind 10.10.100.100:443
   default_backend myservers
 
 backend myservers
-  server server1 127.0.0.1:8080
-  server server2 127.0.0.1:8081
-  server server3 127.0.0.1:8082
+  server server1 192.168.10.10:8080
+  server server2 192.168.10.10:8080
+  server server3 192.168.10.10:8080
