@@ -1,0 +1,8 @@
+frontend myfrontend
+  bind 10.10.100.101:443
+  default_backend myservers
+
+backend myservers
+  server server1 192.168.100.10:8000
+  server server2 192.168.100.11:8000
+  server server3 192.168.100.12:8000
