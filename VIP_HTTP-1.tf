@@ -9,7 +9,4 @@ backend http_back
     balance roundrobin
     server web1 192.168.10.10:8080 check
     server web2 192.168.10.10:8081 check
-EOT
-
-  filename = "${path.module}/haproxy.cfg"
 }
