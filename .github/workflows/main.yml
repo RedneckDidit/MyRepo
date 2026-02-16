@@ -1,12 +1,22 @@
 name: Terraform Deploy (Local VM)
 
-on: [workflow_dispatch]
+on:
+ push:
+  branches:
+   - main
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Terraform Init
+      run: terraform init -input=false
+    - name: Terraform Plan
+      run: terraform plan -input=false
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -input=false
 
-jobs: 
- test:
-  runs-on: [self-hosted]
-  steps:
-   - run: echo "hey buddy"
   
   
 
