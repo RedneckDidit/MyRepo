@@ -41,15 +41,3 @@ EOT
 
   filename = "${path.module}/haproxy.cfg"
 }
-
-# Optionally, install HAProxy using null_resource
-resource "null_resource" "install_haproxy" {
-  provisioner "local-exec" {
-    command = <<EOT
-sudo apt-get update
-sudo apt-get install -y haproxy
-sudo mv ${path.module}/haproxy.cfg /etc/haproxy/haproxy.cfg
-sudo systemctl restart haproxy
-EOT
-  }
-}
