@@ -1,23 +1,32 @@
 name: Terraform Deploy (Local VM)
 
 on:
- push:
-  branches:
-   - main
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: self-hosted
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Terraform Init
-      run: terraform init -input=false| echo "Current directory:" pwd
-    - name: Terraform Plan
-      run: terraform plan -input=false
-    - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false
-      
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  
-  
+      - name: Debug Info
+        run: |
+          echo "Current working directory:"
+          pwd
+          echo "Files in this directory:"
+          ls -la
+          echo "Terraform version:"
+          terraform version
 
+      - name: Terraform Init
+        run: terraform init -input=false
+
+      - name: Terraform Plan
+        run: terraform plan -input=false
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false
