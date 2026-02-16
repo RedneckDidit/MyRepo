@@ -29,14 +29,14 @@ defaults
     timeout client  50000ms
     timeout server  50000ms
 
-frontend http_front
-    bind *:443
+frontend https_front
+    bind 10.10.10.10:80
     default_backend http_back
 
 backend http_back
     balance roundrobin
-    server web1 10.10.10.10:8080 check
-    server web2 10.10.10.10:8081 check
+    server web1 192.168.10.10:8080 check
+    server web2 192.168.10.10:8081 check
 EOT
 
   filename = "${path.module}/haproxy.cfg"
