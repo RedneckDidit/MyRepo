@@ -8,12 +8,10 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-    - name: Debug
-      run: pwd
     - name: Checkout repository
       uses: actions/checkout@v4
     - name: Terraform Init
-      run: terraform init -input=false
+      run: terraform init -input=false| echo "Current directory:" pwd
     - name: Terraform Plan
       run: terraform plan -input=false
     - name: Terraform Apply
