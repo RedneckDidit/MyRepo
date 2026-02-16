@@ -1,8 +1,10 @@
 name: Terraform Deploy (Local VM)
+
 on: [workflow_dispatch]
+
 jobs: 
  test:
   runs-on: [self-hosted]
-    steps:
-     - run: echo "hey there"
+  steps:
+    - run: echo "hey i'm running"
   
