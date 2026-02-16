@@ -1,43 +1,75 @@
 terraform {
   required_providers {
-    null = {
-      source  = "hashicorp/null"
-      version = ">= 3.2.0"
-    }
-    local = {
-      source  = "hashicorp/local"
-      version = ">= 2.6.2"
+    haproxy = {
+      source = "SepehrImanian/haproxy"
+      version = "0.0.7"
     }
   }
 }
 
-provider "null" {}
+resource "haproxy_frontend" "front_test" {
+  name                        = "front_test"
+  backend                     = "backend_test"
+  http_connection_mode        = "http-keep-alive"
+  accept_invalid_http_request = true
+  maxconn                     = 100
+  mode                        = "http"
+  backlog                     = 1000
+  http_keep_alive_timeout     = 10
+  http_request_timeout        = 10
+  http_use_proxy_header       = true
+  httplog                     = true
+  httpslog                    = true
+  tcplog                      = false
 
-# Example: Create HAProxy config using local file
-resource "local_file" "haproxy_cfg" {
-  content = <<EOT
-global
-    log /dev/log    local0
-    log /dev/log    local1 notice
-    daemon
+  compression {
+    algorithms = ["gzip", "identity"]
+    offload    = true
+    types      = ["text/html", "text/plain", "text/css", "application/javascript"]
+  }
 
-defaults
-    log     global
-    mode    http
-    option  httplog
-    timeout connect 5000ms
-    timeout client  50000ms
-    timeout server  50000ms
+  forwardfor {
+    enabled = true
+    header  = "X-Forwarded-For"
+    ifnone  = true
+  }
 
-frontend http_front
-    bind *:80
-    default_backend http_back
+  depends_on = [haproxy_backend.backend_test]
+}
 
-backend http_back
-    balance roundrobin
-    server web1 127.0.0.1:8080 check
-    server web2 127.0.0.1:8081 check
-EOT
+resource "haproxy_backend" "backend_test" {
+  name                 = "backend_test"
+  mode                 = "http"
+  http_connection_mode = "http-keep-alive"
+  server_timeout       = 9
+  check_timeout        = 20
+  connect_timeout      = 20
+  queue_timeout        = 20
+  tarpit_timeout       = 20
+  tunnel_timeout       = 20
+  check_cache          = true
 
-  filename = "${path.module}/haproxy.cfg"
+  balance {
+    algorithm = "roundrobin"
+  }
+
+  httpchk_params {
+    uri     = "/health"
+    version = "HTTP/1.1"
+    method  = "GET"
+  }
+
+  forwardfor {
+    enabled = true
+  }
+}
+
+resource "haproxy_bind" "bind_test" {
+  name        = "bind_test"
+  port        = 8080
+  address     = "0.0.0.0"
+  parent_name = "front_test"
+  parent_type = "frontend"
+  maxconn     = 3000
+  depends_on  = [haproxy_frontend.front_test]
 }
