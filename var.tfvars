@@ -1,1 +1,1 @@
-panos_hostname = "192.168.1.1"
+panos_hostname = "192.168.10.10"
