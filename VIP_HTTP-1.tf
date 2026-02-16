@@ -11,23 +11,6 @@ terraform {
   }
 }
 
-provider "null" {}
-
-# Example: Create HAProxy config using local file
-resource "local_file" "haproxy_cfg" {
-  content = <<EOT
-global
-    log /dev/log    local0
-    log /dev/log    local1 notice
-    daemon
-
-defaults
-    log     global
-    mode    http
-    option  httplog
-    timeout connect 5000ms
-    timeout client  50000ms
-    timeout server  50000ms
 
 frontend https_front
     bind 10.10.10.10:80
