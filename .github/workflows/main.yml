@@ -6,5 +6,7 @@ jobs:
  test:
   runs-on: [self-hosted]
   steps:
-    - run: echo "hey i'm running"
+   - run: echo "hey buddy"
   
+  
+
