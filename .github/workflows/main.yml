@@ -1,33 +1,18 @@
-name: Terraform Deploy (Local VM)
+name: Terraform CI/CD
 
 on:
   push:
-    branches:
-      - main
-
+    branches: [ main ]
 jobs:
-  deploy:
-    runs-on: self-hosted
-    environment: production
+  terraform:
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_panos_api_key: ${{ secrets.PANOS_API_KEY }}
+      TF_VAR_panos_hostname: ${{ secrets.PANOS_HOSTNAME }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Debug Info
-        run: |
-          echo "Current working directory:"
-          pwd
-          echo "Files in this directory:"
-          ls -la
-          echo "Terraform version:"
-          terraform version
-
-      - name: Terraform Init
-        run: terraform init -input=false
-
-      - name: Terraform Plan
-        run: terraform plan -input=false
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init
+      - run: terraform plan
+      - run: terraform apply -auto-approve
