@@ -11,10 +11,6 @@ terraform {
   }
 }
 
-provider "null" {}
-
-# Example: Create HAProxy config using local file
-
 
 frontend https_front
     bind 10.10.10.10:80
