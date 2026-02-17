@@ -34,21 +34,7 @@ resource "panos_address_object" "address_objects" {
 }
 
 
-variable "group-object" {
-  description = "Definition of the address group"
-  type = object({
-    name        = string
-    description = string
-  })
-}
 
-resource "panos_address_group" "group-object" {
-
-  name        = var.group-object.name
-  description = var.group-object.description
-  type        = "static"
-  member      = [for ao in panos_address.address_objects : ao.name]
-}
 
 
 
