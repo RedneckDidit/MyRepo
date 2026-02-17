@@ -5,12 +5,13 @@ on:
     branches: [ main ]
 jobs:
   terraform:
-    runs-on: self-hosted
-     env:
+    runs-on: ubuntu-latest
+    env:
       TF_VAR_panos_api_key: ${{ secrets.PANOS_API_KEY }}
+
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
-      - run: terraform init 
-      - run: terraform plan -input=false 
+      - run: terraform init
+      - run: terraform plan
       - run: terraform apply -auto-approve
