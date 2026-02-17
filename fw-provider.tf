@@ -14,13 +14,13 @@ provider "panos" {
 
 
 variable "address_objects" {
-  description = "List of address objects to create"
-  {
+  description = "List of address objects"
+  type = list(object({
     name        = string
     value       = string
     description = string
-    type        = string
-  }
+    type        = string   # e.g., "ip-netmask"
+  }))
 }
 
 
