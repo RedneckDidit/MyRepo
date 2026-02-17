@@ -46,7 +46,8 @@ resource "panos_address_group" "group-object" {
 
   name        = var.group-object.name
   description = var.group-object.description
-  static      = [for k in panos_address.address_objects : k.name]
+  type        = "static"
+  static      = [for ao in panos_address.address_objects : ao.name]
 }
 
 
