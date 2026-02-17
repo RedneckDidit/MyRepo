@@ -34,7 +34,7 @@ resource "panos_address_object" "address_objects" {
 }
 
 
-variable "address_group" {
+variable "group-object" {
   description = "Definition of the address group"
   type = object({
     name        = string
