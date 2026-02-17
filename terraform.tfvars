@@ -15,7 +15,7 @@ address_objects = [
   }
 ]
 
-address_group = {
+group-object = {
   name        = "Web_DB_Group"
   description = "Group including web and DB servers"
 }
