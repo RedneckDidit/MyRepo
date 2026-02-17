@@ -11,3 +11,21 @@ provider "panos" {
   hostname = var.panos_hostname
   api_key  = var.panos_api_key
 }
+variable "address_objects" {
+  description = "List of address objects to create"
+  type = list(object({
+    name        = string
+    value       = string
+    description = string
+    type        = string
+  }))
+}
+
+resource "panos_address_object" "address_objects" {
+  for_each = { for obj in var.address_objects : obj.name => obj }
+
+  name        = each.value.name
+  value       = each.value.value
+  description = each.value.description
+  type        = each.value.type
+}
