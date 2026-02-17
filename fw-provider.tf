@@ -14,9 +14,8 @@ provider "panos" {
 
 variable "group-object" {
     name        = string
-    value       = string
     description = string
-    type        = string
+    member      = list(string)
   }
 }
 
@@ -24,7 +23,7 @@ resource "panos_address_group" "group-object" {
 
   name        = var.group-object.name
   description = var.group-object.description
-  static      = [for k in panos_address.address_objects : k.name]
+  member      = [for k in panos_address.address_objects : k.name]
 }
 
 
