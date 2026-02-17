@@ -14,7 +14,6 @@ provider "panos" {
 
 
 variable "group-object" {
-  description = "name of the group object"
   {
     type = list(object({
     name        = string
