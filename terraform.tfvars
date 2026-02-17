@@ -21,5 +21,4 @@ group-object   = [
     description = "group description"
     type        = "string"
   }
-  
 ]
