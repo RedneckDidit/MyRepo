@@ -6,9 +6,6 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-    env:
-      TF_VAR_panos_api_key: ${{ secrets.PANOS_API_KEY }}
-
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
