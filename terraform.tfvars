@@ -19,6 +19,5 @@ group-object   = [
   {
     name        = "group-3"
     description = "group description"
-    type        = "string"
   }
 ]
