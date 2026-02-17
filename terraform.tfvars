@@ -15,7 +15,7 @@ address_objects = [
   }
 ]
 
-group-object = = [
+group-object   = [
   {
     name        = "group-3"
     description = "group description"
