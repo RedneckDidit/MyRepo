@@ -13,12 +13,9 @@ provider "panos" {
 
 
 variable "group-object" {
-  {
-    type = list(object({
     name        = string
     description = string
     type        = string
-  }))
   }
 }
 
