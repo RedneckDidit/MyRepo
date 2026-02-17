@@ -12,20 +12,6 @@ provider "panos" {
 }
 
 
-variable "group-object" {
-    name        = string
-    description = string
-    static      = list(string)
-  }
-}
-
-resource "panos_address_group" "group-object" {
-
-  name        = var.group-object.name
-  description = var.group-object.description
-  static      = [for k in panos_address.address_objects : k.name]
-}
-
 
 variable "address_objects" {
   description = "List of address objects to create"
@@ -46,3 +32,23 @@ resource "panos_address_object" "address_objects" {
   description = each.value.description
   type        = each.value.type
 }
+
+
+variable "address_group" {
+  description = "Definition of the address group"
+  type = object({
+    name        = string
+    description = string
+  })
+}
+
+resource "panos_address_group" "group-object" {
+
+  name        = var.group-object.name
+  description = var.group-object.description
+  type        = "static"
+  static      = [for k in panos_address.address_objects : k.name]
+}
+
+
+
