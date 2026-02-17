@@ -14,6 +14,7 @@ provider "panos" {
 
 variable "group-object" {
     name        = string
+    value       = string
     description = string
     type        = string
   }
