@@ -2,16 +2,24 @@ panos_hostname = "192.168.10.10"
 
 address_objects = [
   {
-    name        = "server-4"
-    value       = "10.10.10.40"
+    name        = "server-8"
+    value       = "10.10.10.80"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "server-5"
-    value       = "10.10.10.50"
+    name        = "server-9"
+    value       = "10.10.10.90"
     description = "Database server IP"
     type        = "ip-netmask"
   }
 ]
 
+group-object = = [
+  {
+    name        = "group-3"
+    description = "group description"
+    type        = "string"
+  }
+  
+]
