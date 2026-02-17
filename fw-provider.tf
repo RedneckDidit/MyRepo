@@ -6,9 +6,8 @@ terraform {
     }
   }
 }
-
 provider "panos" {
-  hostname = var.panos_hostname
-  api_key  = var.panos_api_key
-
+  hostname = "192.168.10.10"
+  username = "admin"
+  password = "admin"
 }
