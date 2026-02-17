@@ -1,1 +1,2 @@
 panos_hostname = "192.168.10.10"
+panos_api_key  = "LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09"
