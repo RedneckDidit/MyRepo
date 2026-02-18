@@ -9,3 +9,12 @@ variable "panos_api_key" {
   sensitive   = true
 }
 
+variable "address_objects" {
+  description = "List of address objects"
+  type = list(object({
+    name        = string
+    value       = string
+    description = string
+    type        = string   # e.g., "ip-netmask"
+  }))
+}
