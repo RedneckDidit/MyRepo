@@ -38,12 +38,14 @@ address_objects = [
     type        = "ip-netmask"
   }
 ]
-group_objects [ 
- {name        = group-1
+group_objects = [ 
+ {
+ name        = group-1
  description = group-10
  static_addresses =[server-10,server-20,server-30]
 }
-{name        = group-2
+{
+ name        = group-2
  description = group-20
  static_addresses =[server-11,server-21,server-31]
 }
