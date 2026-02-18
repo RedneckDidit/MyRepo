@@ -13,17 +13,6 @@ provider "panos" {
 
 
 
-variable "address_objects" {
-  description = "List of address objects"
-  type = list(object({
-    name        = string
-    value       = string
-    description = string
-    type        = string   # e.g., "ip-netmask"
-  }))
-}
-
-
 resource "panos_address_object" "address_objects" {
   for_each = { for obj in var.address_objects : obj.name => obj }
 
@@ -33,6 +22,13 @@ resource "panos_address_object" "address_objects" {
   type        = each.value.type
 }
 
+resource "panos_address_group" "group-1" {
+
+  name        = "group-1"
+  description = "group-1"
+static_addresses = [for k in panos_address.address_objects : k.name]
+  
+}
 
 
 
