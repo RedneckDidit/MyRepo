@@ -18,7 +18,7 @@ address_objects = [
     value       = "10.10.10.30"
     description = "Web server IP"
     type        = "ip-netmask"
-  }
+  },
  {
     name        = "server-11"
     value       = "10.10.10.101"
