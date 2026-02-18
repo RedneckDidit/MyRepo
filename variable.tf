@@ -22,6 +22,6 @@ variable "group_objects" {
 type = list(object({ 
 name        = string
  description = string
- static_addresses = list
+ static_addresses = list(string)
 }))
 }
