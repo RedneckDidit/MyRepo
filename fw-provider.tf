@@ -26,7 +26,7 @@ resource "panos_address_group" "group_objects" {
   for_each = { for obj in var.group_objects : obj.name => obj }
   name        = each.value.name
   description = each.value.description
-  static_addresses = [each.value.static_addresses]
+  static_addresses = each.value.static_addresses
 }
   
 
