@@ -2,52 +2,52 @@ panos_hostname = "192.168.10.10"
 
 address_objects = [
   {
-    name        = "WEB-ECOM"
-    value       = "192.168.10.80"
+    name        = "PE-1"
+    value       = "10.0.0.1"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "WEB-COM"
-    value       = "192.168.10.99"
+    name        = "PE-2"
+    value       = "10.0.0.2"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "WEB-EN"
-    value       = "192.168.10.200"
+    name        = "PE-3"
+    value       = "10.0.0.3"
     description = "Web server IP"
     type        = "ip-netmask"
   },
  {
-    name        = "API-FR"
-    value       = "192.168.10.56"
+    name        = "API-PT"
+    value       = "192.168.20.70"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "API-MA"
-    value       = "192.168.10.58"
+    name        = "API-IT"
+    value       = "192.168.20.58"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "API-ES"
-    value       = "192.168.10.59"
+    name        = "API-PL"
+    value       = "192.168.20.59"
     description = "Web server IP"
     type        = "ip-netmask"
   }
 ]
 group_objects = [ 
  {
- name        = "group-WEB"
+ name        = "group-PE"
  description = "group-WEB"
- static_addresses =["WEB-ECOM","WEB-COM","WEB-EN"]
+ static_addresses =["PE-1","PE-2","PE-3"]
 },
 {
- name        = "group-API"
+ name        = "group-API-2"
  description = "group-API"
- static_addresses =["API-FR","API-MA","API-ES"]
+ static_addresses =["API-PT","API-IT","API-PL"]
 }
 
 ]
