@@ -18,3 +18,10 @@ variable "address_objects" {
     type        = string   # e.g., "ip-netmask"
   }))
 }
+variable "group_objects" {
+type = list(object({ 
+name        = string
+ description = string
+ static_addresses = list
+}))
+}
