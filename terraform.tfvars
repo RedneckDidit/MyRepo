@@ -2,52 +2,52 @@ panos_hostname = "192.168.10.10"
 
 address_objects = [
   {
-    name        = "server-33"
-    value       = "10.10.10.33"
+    name        = "server-88"
+    value       = "10.10.10.88"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "server-34"
-    value       = "10.10.10.34"
+    name        = "server-99"
+    value       = "10.10.10.99"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "server-35"
-    value       = "10.10.10.35"
+    name        = "server-00"
+    value       = "10.10.10.200"
     description = "Web server IP"
     type        = "ip-netmask"
   },
  {
-    name        = "server-53"
-    value       = "10.10.10.53"
+    name        = "server-56"
+    value       = "10.10.10.56"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "server-54"
-    value       = "10.10.10.54"
+    name        = "server-58"
+    value       = "10.10.10.58"
     description = "Web server IP"
     type        = "ip-netmask"
   },
   {
-    name        = "server-55"
-    value       = "10.10.10.55"
+    name        = "server-59"
+    value       = "10.10.10.59"
     description = "Web server IP"
     type        = "ip-netmask"
   }
 ]
 group_objects = [ 
  {
- name        = "group-300"
+ name        = "group-XYZ"
  description = "group-300"
  static_addresses =["server-88","server-99","server-00"]
 },
 {
- name        = "group-20"
- description = "group-20"
- static_addresses =["server-22","server-44","server-77"]
+ name        = "group-500"
+ description = "group-500"
+ static_addresses =["server-56","server-58","server-59"]
 }
 
 ]
