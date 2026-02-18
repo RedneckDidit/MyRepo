@@ -26,7 +26,9 @@ resource "panos_address_group" "group-1" {
 
   name        = "group-1"
   description = "group-1"
-static_addresses = [for k in panos_address.address_objects : k.name]
+for_each = { for obj in var.address_objects : obj.name => obj }
+static_addresses = [panos_address.address_objects.name]
+}
   
 }
 
