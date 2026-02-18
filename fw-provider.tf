@@ -23,7 +23,6 @@ resource "panos_address_object" "address_objects" {
 }
 
 resource "panos_address_group" "group-1" {
-for_each = { for obj in var.address_objects : obj.name => obj }
   name        = "group-1"
   description = "group-1"
 static_addresses = [each.value.name]
