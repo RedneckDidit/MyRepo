@@ -28,7 +28,6 @@ resource "panos_address_group" "group-1" {
 static_addresses = [each.value.name]
 }
   
-}
 
 
 
