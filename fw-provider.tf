@@ -22,11 +22,11 @@ resource "panos_address_object" "address_objects" {
   type        = each.value.type
 }
 
-resource "panos_address_group" "group-1" {
-  name        = "group-1"
-  description = "group-1"
-for_each = { for obj in var.address_objects : obj.name => obj }
-static_addresses = [each.value.name]
+resource "panos_address_group" "group_objects" {
+  for_each = { for obj in var.group_objects : obj.name => obj }
+  name        = each.value.name
+  description = each.value.description
+  static_addresses = [each.value.value]
 }
   
 
