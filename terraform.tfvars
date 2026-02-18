@@ -42,12 +42,12 @@ group_objects = [
  {
  name        = "group-300"
  description = "group-300"
- static_addresses =["server-33","server-34","server-35"]
+ static_addresses =["server-88","server-99","server-00"]
 },
 {
  name        = "group-20"
  description = "group-20"
- static_addresses =["server-50","server-54","server-55"]
+ static_addresses =["server-22","server-44","server-77"]
 }
 
 ]
